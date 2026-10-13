@@ -1,0 +1,9 @@
+{
+  "name": "微光漫遊 Luma Wander",
+  "short_name": "微光漫遊",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F4F1EA",
+  "theme_color": "#4A5D4E",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
