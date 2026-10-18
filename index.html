@@ -88,12 +88,6 @@ h2{font-size:15px;font-weight:400;color:var(--sub);margin:28px 0 6px}
 .bar{height:6px;border-radius:3px;background:var(--line);margin-top:6px;overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:var(--amber);border-radius:3px;transition:width .8s}
 .shr{display:flex;justify-content:center;margin-top:-4px}
-.lvrow{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:8px;font-size:14px;color:var(--sub)}
-.lvbook{text-align:center}.lvbook h3{font-size:21px;line-height:1.5;margin:6px 0 4px}
-.lvs{color:var(--sub);font-size:14px;margin-bottom:8px}
-#lvLuma .luma{width:110px;margin:0 auto;display:block}
-.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:14px 16px;margin-top:10px;border-radius:18px;background:var(--sf);border:1.5px solid transparent}
-.opt.on{border-color:var(--ink)}
 #splash{position:fixed;inset:0;z-index:200;display:grid;place-content:center;justify-items:center;gap:18px;text-align:center;color:var(--ink);
  background:radial-gradient(circle at 50% 42%,color-mix(in srgb,var(--glow) 24%,transparent),transparent 62%),var(--bg);transition:opacity .7s;animation:splashOut .8s 6s forwards}
 #splash.out{opacity:0;pointer-events:none}
@@ -101,26 +95,93 @@ h2{font-size:15px;font-weight:400;color:var(--sub);margin:28px 0 6px}
 #splash p{font-size:16px;letter-spacing:.08em;color:var(--sub);animation:txt 2.4s ease-in-out infinite}
 @keyframes txt{50%{opacity:.5}}
 @keyframes splashOut{to{opacity:0;visibility:hidden}}
-#onb{position:fixed;inset:0;z-index:150;overflow:auto;background:radial-gradient(circle at 50% 28%,color-mix(in srgb,var(--glow) 18%,transparent),transparent 60%),var(--bg);transition:opacity .7s}
-#onb.out{opacity:0;pointer-events:none}
-.ob{max-width:440px;margin:0 auto;min-height:100%;padding:calc(28px + env(safe-area-inset-top,0)) 22px calc(28px + env(safe-area-inset-bottom,0));display:flex;flex-direction:column;justify-content:center;text-align:center}
-#obL .luma{width:120px;margin:0 auto 8px;display:block}
 .pgin{animation:fin2 .7s ease-out}
 @keyframes fin2{from{opacity:0;transform:translateY(10px)}}
-.obT{font-weight:400;font-size:27px;line-height:1.7;margin:10px 0 14px}
-.obP{color:var(--sub);font-size:16px;line-height:1.9}
-.obA{margin-top:26px}
-.obS{color:var(--sub);font-size:14px;margin:6px 0}
-.obQ{font-weight:400;font-size:21px;line-height:1.5;margin:6px 0 10px}
-.obN{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
-.dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--amber)}
-.obG,.obH{font-size:14px;color:var(--sub);margin-top:10px;line-height:1.7}
 #hint{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0));width:min(92vw,440px);display:flex;gap:12px;align-items:center;padding:12px 16px;border-radius:18px;background:var(--bg);color:var(--ink);border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.14);z-index:15;text-align:left;font-size:14px;line-height:1.55;animation:hin .5s}
 #hint small{color:var(--sub);white-space:nowrap}
 .hn{flex:none;width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber)}
 @keyframes hin{from{opacity:0}}
-.opt b{font-weight:400;font-size:16px;display:block;line-height:1.4}.opt small{color:var(--sub);font-size:13px}
-.og{flex:none;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--amber));opacity:calc(.3 + var(--g)*.7);box-shadow:0 0 calc(var(--g)*16px) rgba(255,191,0,.8)}
+#wel{position:fixed;inset:0;z-index:150;overflow:hidden;color:#fff;transition:opacity .9s;outline:none;background:radial-gradient(circle at 50% 108%,rgba(var(--gl),.28),transparent 62%),linear-gradient(var(--g1),var(--g2))}
+#wel.out{opacity:0;pointer-events:none}
+.sc-A{--g1:#06101d;--g2:#10263d;--gl:255,205,110}
+.sc-B{--g1:#04100b;--g2:#0b2418;--gl:255,184,92}
+.sc-C{--g1:#060a14;--g2:#161e2f;--gl:200,220,255}
+#wScene{position:absolute;inset:0;will-change:transform}
+#wScene svg{width:100%;height:100%;display:block}
+.brth{transform-box:fill-box;transform-origin:center;animation:brth 5.5s ease-in-out infinite}
+@keyframes brth{0%,100%{opacity:.55;transform:scale(.88)}50%{opacity:1;transform:scale(1.12)}}
+.fog{animation:drift 26s ease-in-out infinite alternate}
+.fog.f2{animation-duration:34s;animation-direction:alternate-reverse}
+@keyframes drift{from{transform:translateX(-26px)}to{transform:translateX(26px)}}
+.rain{position:absolute;inset:-10% 0 0 0;pointer-events:none;opacity:.5;background:repeating-linear-gradient(103deg,transparent 0 13px,rgba(200,215,240,.25) 13px 14px);animation:rainf .55s linear infinite}
+.rain.r2{opacity:.3;background:repeating-linear-gradient(101deg,transparent 0 23px,rgba(200,215,240,.3) 23px 24px);animation-duration:.8s}
+@keyframes rainf{to{background-position:-24px 90px}}
+#wTxt{position:absolute;transform:translateX(-50%);width:max-content;max-width:86vw;text-align:center;font-size:20px;letter-spacing:.14em;line-height:1.7;color:rgba(255,246,222,.96);text-shadow:0 0 18px rgba(var(--gl),.65);opacity:0;animation:fin 2.4s 3s forwards;pointer-events:none}
+#wTap{position:absolute;left:0;right:0;bottom:calc(36px + env(safe-area-inset-bottom,0));text-align:center;font-size:13px;letter-spacing:.2em;color:rgba(255,255,255,.55);opacity:0;animation:fin 2s 6s forwards;pointer-events:none}
+#wCv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:none;transition:opacity .9s}
+#wPanel{position:absolute;inset:0;display:flex;padding:24px;overflow:auto}
+#wPanel:empty{display:none}
+.wcol{width:min(92vw,400px);margin:auto}
+.wcard{background:#fff;color:#2B323B;border-radius:24px;padding:24px 22px 22px;box-shadow:0 18px 50px rgba(0,0,0,.38);text-align:center}
+.wl .luma{width:104px;margin:-6px auto 0;display:block}
+.wt{font-weight:400;font-size:22px;margin:4px 0 6px}
+.wq{font-size:19px;line-height:1.7;margin:6px 0}
+.wp{font-size:15px;line-height:1.9;color:#5b6168;margin:10px 0 14px}
+.wn{display:block;font-size:15px;margin-bottom:6px}
+#wName{width:100%;padding:.7em 1em;border-radius:14px;border:1.5px solid #e4dfd2;background:#FBF8F1;font:inherit;font-size:16px;text-align:center;color:#2B323B}
+#wName:focus-visible{outline:2px solid #4A5D4E;outline-offset:2px}
+.wb{margin-top:16px;padding:.7em 1.6em;border-radius:99px;background:#4A5D4E;color:#fff;font-size:16px}
+.wb:focus-visible,.ao:focus-visible,.wskip:focus-visible{outline:2px solid #4A5D4E;outline-offset:2px}
+.wsc{font-size:13px;color:#7C9A80;letter-spacing:.12em;margin-top:2px}
+.wq2{font-weight:400;font-size:18px;line-height:1.7;margin:8px 0 6px}
+.ao{display:block;width:100%;text-align:left;padding:13px 16px;margin-top:10px;border-radius:16px;background:#F6F1E7;color:#2B323B;font-size:15px;line-height:1.5;border:1.5px solid transparent;transition:background .2s,border-color .2s}
+.ao.on{border-color:#4A5D4E;background:#EAF1E8}
+.wskip{margin-top:12px;color:#8a8f94;font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.wdots{display:flex;gap:7px;justify-content:center;margin-top:18px}
+.wdots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3)}.wdots i.on{background:#FFBF00;box-shadow:0 0 8px #FFBF00}
+.wnote{font-size:12px;color:#8a8f94;line-height:1.7;margin-top:12px}
+#daily{position:fixed;left:50%;transform:translateX(-50%);top:calc(12px + env(safe-area-inset-top,0));width:min(92vw,440px);padding:12px 14px;border-radius:18px;background:var(--bg);color:var(--ink);border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.14);z-index:14;animation:hin .6s}
+#daily b{font-weight:400}
+.dbt{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.dbt button{padding:.35em .9em;border-radius:99px;border:1px solid var(--line);font-size:14px}
+.dbt button:hover,.dbt button:focus-visible{background:var(--ink);color:var(--bg)}
+.jbox{margin-top:22px}
+.jbox>small{color:var(--sub);font-size:13px}
+.jw{position:relative;margin-top:6px}
+#jTx{width:100%;min-height:88px;padding:.7em .9em 1.9em;border-radius:14px;border:1px solid var(--line);background:var(--sf);color:var(--ink);font:inherit;line-height:1.6;resize:none;display:block}
+#jTx:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.jc{position:absolute;right:12px;bottom:8px;font-size:12px;color:var(--sub)}
+.jact{display:flex;justify-content:flex-end;margin-top:8px}
+.day .jd{position:absolute;right:6px;bottom:6px;width:6px;height:6px;border-radius:50%;background:var(--amber);z-index:1}
+.dsec{margin-top:14px}.dsec>small{display:block;color:var(--sub);font-size:13px;margin-bottom:4px}
+.dtx{font-size:17px;line-height:1.7}
+.dstone{display:flex;align-items:center;gap:12px}.ic2w{width:56px;height:56px;flex:none}
+.chips2{display:flex;gap:10px;flex-wrap:wrap}
+.pchip{width:84px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.pchip i{display:block;height:54px}.pchip span{display:block;font-size:12px;text-align:center;padding:4px 0;color:var(--sub)}
+.mail{position:absolute;top:8px;right:8px;z-index:6;display:flex;flex-direction:column;align-items:center;padding:6px 8px 4px;border-radius:14px;background:color-mix(in srgb,var(--bg) 82%,transparent);border:1px solid var(--line);font-size:11px;color:var(--ink)}
+.mail svg{width:30px;height:30px}
+.mail.new svg{animation:wob 2.4s ease-in-out infinite}
+.mail .md{position:absolute;top:3px;right:5px;width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 8px var(--amber)}
+@keyframes wob{0%,100%{transform:rotate(0)}20%{transform:rotate(-8deg)}40%{transform:rotate(8deg)}60%{transform:rotate(0)}}
+.lt{width:100%;text-align:left}.lt .hn{margin-left:auto}
+.env{position:relative;width:220px;height:150px;margin:8px auto;perspective:600px;transition:opacity .5s,height .5s,margin .5s}
+.env svg{position:absolute;inset:0;width:100%;height:100%}
+.env .flap{position:absolute;left:10px;top:30px;width:200px;height:72px;background:#d9bdd4;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;animation:flap .8s .3s ease-in-out forwards}
+.env .seal{position:absolute;left:50%;top:92px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--amber);box-shadow:0 0 12px var(--amber);animation:fout .4s .3s forwards}
+.env.gone{opacity:0;height:0;margin:0;overflow:hidden}
+@keyframes flap{to{transform:rotateX(180deg)}}
+@keyframes fout{to{opacity:0}}
+.paper{background:#FBF7EE;color:#3a3a38;border-radius:14px;padding:22px 20px;box-shadow:0 6px 20px rgba(0,0,0,.12);text-align:left;animation:lpin .8s ease-out}
+@keyframes lpin{from{opacity:0;transform:translateY(24px)}}
+.paper h3{font-weight:400;font-size:22px;text-align:center;margin:0}
+.lsub{text-align:center;color:#8a8578;font-size:13px;margin:2px 0 6px}
+.lbl{display:flex;align-items:center;gap:10px;color:#6E8B6F;font-size:14px;margin:18px 0 10px}
+.lbl::before,.lbl::after{content:"";flex:1;height:1px;background:#d9d2c0}
+.stz{margin:0 0 14px;line-height:1.9;font-size:16px}
+.paper .stz{opacity:0}
+.rp p{margin:0 0 12px;line-height:1.9;font-size:16px}
+.sig{text-align:right;margin-top:8px}
 .peek{opacity:.45;pointer-events:none;-webkit-mask-image:linear-gradient(#000 20%,transparent);mask-image:linear-gradient(#000 20%,transparent)}
 .ic2{position:relative;display:block;width:100%;height:100%}
 .ic2 svg,.ic2 img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
@@ -277,7 +338,7 @@ nav button[aria-current=true]::after{content:"";position:absolute;left:50%;botto
 
  <section class="view" data-view="home">
   <div class="stage" id="stage"></div>
-  <div class="stbar"><div class="stl"><b id="stName"></b><small id="stNext"></small></div><div class="bar"><i id="stFill"></i></div><div class="lvrow"><span id="lvName"></span><button class="gear" id="lvBtn">切換今日能量狀態</button></div></div>
+  <div class="stbar"><div class="stl"><b id="stName"></b><small id="stNext"></small></div><div class="bar"><i id="stFill"></i></div></div>
   <p class="lead" id="line">你在這裡就好</p>
   <div class="shr" id="shareRow" hidden><button class="btn ghost" id="shareBtn">分享今天的微光</button></div>
   <div class="banner" id="banner" hidden></div>
@@ -290,7 +351,10 @@ nav button[aria-current=true]::after{content:"";position:absolute;left:50%;botto
   <h2>對比卡片 · 照片只存在這支手機，不會上傳</h2><div id="cards"></div>
  </section>
 
- <section class="view" data-view="log" hidden><h2>打卡日誌 · 完成一項任務，就能放下今天的心情</h2><div id="cal"></div><p class="calnote">沒有打卡的日子保持空白就好，這裡沒有缺勤。</p></section>
+ <section class="view" data-view="log" hidden><h2>打卡日誌 · 完成一項任務，就能放下今天的心情</h2><div id="cal"></div>
+ <div class="jbox"><h2 style="margin-top:22px">今天的一句話</h2><small>只寫最微小的一句就好，最多 50 字。</small>
+  <div class="jw"><textarea id="jTx" maxlength="50" rows="2" placeholder="例如：今天的陽光很溫。"></textarea><span class="jc" id="jC">0/50</span></div>
+  <div class="jact"><button class="btn" id="jSave">收進今天</button></div></div><p class="calnote">沒有打卡的日子保持空白就好，這裡沒有缺勤。</p></section>
 
  <section class="view" data-view="shop" hidden><h2>小屋佈置與商店</h2><div id="shop"></div></section>
 
@@ -323,19 +387,23 @@ nav button[aria-current=true]::after{content:"";position:absolute;left:50%;botto
 <dialog id="pcDlg"><div id="pcBody"></div><div class="act"><button class="btn" id="pcOk">收下</button></div></dialog>
 
 <dialog id="askDlg"><h3 id="askT"></h3><p id="askP" style="color:var(--sub);font-size:15px"></p><div class="act"><button class="btn ghost" id="askNo">再想想</button><button class="btn" id="askYes">確定</button></div></dialog>
-<dialog id="lvDlg"><div class="lvbook"><div id="lvLuma"></div><h3 id="lvQ"></h3><p class="lvs">小苔會依你現在的狀態，只留下剛剛好的任務。</p></div><div id="lvOpts"></div><div class="act"><button class="btn ghost" id="lvX">先不換</button></div></dialog>
 <dialog id="moodDlg"><div id="moodBody"><h3>今天的心情，放在這裡</h3><div id="moodChips"></div>
  <input id="moodTx" maxlength="12" placeholder="輸入想放下的壞情緒或執念..." aria-label="一句話，選填，12 字內">
  <div class="act"><button class="btn ghost" id="moodX">先不要</button><button class="btn" id="moodGo" disabled>放下</button></div></div>
  <div id="ritual" hidden></div></dialog>
+<dialog id="dayDlg"><div id="dayBody"></div><div class="act" id="dayAct"></div></dialog>
+<dialog id="mailDlg"><h3>小苔的信箱</h3><div id="mailList"></div><div class="act"><button class="btn" id="mailX">關閉</button></div></dialog>
+<dialog id="letterDlg" style="padding:16px"><div id="lBody"></div><div class="act"><button class="btn ghost" id="lImg">存為圖片</button><button class="btn" id="lX">關閉</button></div></dialog>
 <dialog id="crushDlg"><div id="crushBody"></div><div class="act"><button class="btn ghost" id="crushX">關閉</button><button class="btn" id="crushGo" hidden>粉碎釋放</button></div></dialog>
 <dialog id="setDlg"><h3>設定</h3><p style="font-size:15px">所有照片與紀錄都只保存在這支手機的瀏覽器裡，絕不上傳雲端。換手機或清除瀏覽器資料前，請先匯出備份。</p>
- <div class="act" style="justify-content:flex-start;flex-wrap:wrap"><button class="btn" id="exp">匯出備份 (JSON)</button><button class="btn ghost" id="imp">還原備份</button><button class="btn ghost" id="setLv">切換今日能量狀態</button></div>
+ <p style="font-size:13px;color:var(--sub)">心裡太沉重的時候，也可以打安心專線 1925（24 小時、免費），或找一位信任的人說說話。</p>
+ <div class="act" style="justify-content:flex-start;flex-wrap:wrap"><button class="btn" id="exp">匯出備份 (JSON)</button><button class="btn ghost" id="imp">還原備份</button><button class="btn ghost" id="setRe">重新聽小苔問一次</button></div>
  <div class="act"><button class="btn ghost" id="setX">關閉</button></div></dialog>
 <input type="file" accept="image/*" capture="environment" id="colorIn" hidden>
 <input type="file" accept="application/json,.json" id="restoreIn" hidden>
 <div id="toast" role="status" aria-live="polite"></div>
-<div id="onb" hidden role="dialog" aria-modal="true" aria-label="歡迎來到微光漫遊"><div class="ob"><div id="obL"></div><div id="obB"></div></div></div>
+<div id="wel" hidden tabindex="0" role="dialog" aria-modal="true" aria-label="歡迎來到微光漫遊"><div id="wScene" aria-hidden="true"></div><p id="wTxt">這裡亮著微光，正在等你。</p><p id="wTap">輕觸螢幕任何地方</p><canvas id="wCv" aria-hidden="true"></canvas><div id="wPanel"></div></div>
+<div id="daily" hidden role="region" aria-label="今日問候"><b>今天感覺如何？</b><div class="dbt"><button type="button" data-dv="-1">想多休息一下</button><button type="button" data-dv="0">步調剛剛好</button><button type="button" data-dv="1">今天有點力氣</button></div></div>
 <button id="hint" type="button" hidden><span class="hn"></span><span id="hintT"></span><small>點一下收起</small></button>
 <div id="splash" role="status" aria-live="polite"><div class="sl"></div><p>正在為您點亮微光宇宙...</p></div>
 
@@ -348,11 +416,11 @@ const ASSETS={floorWood:'assets/floor-wood.jpg',rug:'assets/rug.jpg',cat:'assets
  mood:{stone:'assets/mood/stone.png',mud:'assets/mood/mud.png',pearl:'assets/mood/pearl.png'},
  cal:{stoneMoss:'assets/cal/stone-moss.png',released:'assets/cal/released.png'}};
 const stageOf=e=>e>=2000?3:e>=600?2:1;
-const def={earned:0,spent:0,colors:[],cards:[],log:{},postcards:[],lastVisit:0,theme:'oat',wk:{},bag:[],owned:[],on:[],stage:1,social:false,last:'',calendar:{},userLevel:'',hints:{}};
-const norm=o=>{const x={...def,...o};['colors','cards','postcards','bag','owned','on'].forEach(k=>{if(!Array.isArray(x[k]))x[k]=[]});['log','wk','calendar','hints'].forEach(k=>{if(!x[k]||typeof x[k]!=='object')x[k]={}});x.earned=+x.earned||0;x.spent=+x.spent||0;x.stage=Math.max(1,+x.stage||1,stageOf(x.earned));return x};
+const def={earned:0,spent:0,colors:[],cards:[],log:{},postcards:[],lastVisit:0,theme:'oat',wk:{},bag:[],owned:[],on:[],stage:1,social:false,last:'',calendar:{},userLevel:'',hints:{},journal:{},dayColors:{},letters:[],lettersGiven:0,isFirstLogin:false,userName:'旅人',onboardingScene:'',welStep:'',assessN:0,poolStart:0,dayAdj:null};
+const norm=o=>{const x={...def,...o};['colors','cards','postcards','bag','owned','on','letters'].forEach(k=>{if(!Array.isArray(x[k]))x[k]=[]});['log','wk','calendar','hints','journal','dayColors'].forEach(k=>{if(!x[k]||typeof x[k]!=='object')x[k]={}});if(x.onboarded===false)x.isFirstLogin=true;x.earned=+x.earned||0;x.spent=+x.spent||0;x.stage=Math.max(1,+x.stage||1,stageOf(x.earned));return x};
 let S;try{S=norm(JSON.parse(localStorage.getItem(KEY)||'{}'))}catch{S=norm({})}
 const FIRST=(()=>{try{return !localStorage.getItem(KEY)}catch{return true}})();
-if(FIRST)S.onboarded=false;
+if(FIRST){S.isFirstLogin=true;S.poolStart=Math.floor(Math.random()*6)}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch{toast('儲存空間滿了，刪掉一張舊卡片就能再存')}};
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const today=()=>new Date().toLocaleDateString('sv');
@@ -367,15 +435,11 @@ const STAGES=[
  {k:'伸展期',n:'慢慢伸展中',at:600,d:'頭頂長出葉片，小屋多了一扇窗。'},
  {k:'盛開期',n:'穩步盛開中',at:2000,d:'光暈開始流動，日子有了自己的節奏。'}
 ];
-const LV={
- A1:{t:'撐著過日子，就已經很用力了',s:'嚴重影響日常 · 極低能量',tag:'極低能量',g:.25},
- A2:{t:'生活還能自理，只是沒什麼力氣',s:'生活尚能自理 · 低能量',tag:'低能量',g:.45},
- B:{t:'壓力明顯影響著生活',s:'中能量',tag:'中能量',g:.7},
- C:{t:'壓力有點大，想放空或做點有儀式感的事',s:'高能量',tag:'高能量',g:1}
-};
 const POOL={A1:['A1'],A2:['A1','A2'],B:['A1','A2','B1','B2'],C:['C1','C2']};
 const LVT={A1:'輕輕陪伴',A2:'生活微行動',B1:'動一動',B2:'回到節奏',C1:'儀式感',C2:'自律與連結'};
-const inPool=t=>POOL[S.userLevel||'A1'].includes(t.level);
+const ORD=['A1','A2','B','C'];
+const effLevel=()=>{const i=Math.max(0,ORD.indexOf(S.userLevel)),a=S.dayAdj&&S.dayAdj.d===today()?S.dayAdj.v:0;return ORD[Math.max(0,Math.min(3,i+a))]};
+const inPool=t=>POOL[effLevel()].includes(t.level);
 const TASKS=[
  {id:'water',level:'A1',title:'喝一口水',hint:'溫水更好',pts:10,lim:'day'},
  {id:'sky',level:'A1',title:'開窗看一眼天空',pts:10,lim:'day'},
@@ -477,20 +541,20 @@ function applyGlow(){
 }
 function applyTheme(){document.documentElement.dataset.theme=S.theme;$$('.themes button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===S.theme));$('meta[name=theme-color]').content={oat:'#F4F1EA',night:'#2B323B',moss:'#4A5D4E'}[S.theme]}
 function go(v){
- if(v==='log'){renderCal();maybeHint('cal',todayCount()?'今天可以打卡了：點今天的格子，把心情放下。':'完成一項任務後，點今天的格子，就能把心情放下。')}
+ if(v==='log'){renderCal();renderJ();maybeHint('cal',todayCount()?'今天可以打卡了：點今天的格子，把心情放下。':'完成一項任務後，點今天的格子，就能把心情放下。')}
  if(v==='tasks'&&inPool(TASKS.find(t=>t.id==='tidy')))maybeHint('ba','整理小角落時，先拍「之前」再拍「之後」，小苔會做成能左右滑動的對比卡片。');$$('.view').forEach(s=>s.hidden=s.dataset.view!==v);$$('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.go===v));scrollTo(0,0)}
 
 /* ---------- points ---------- */
 const bal=()=>S.earned-S.spent;
 function renderPts(){$('#bal').textContent=bal();$('#earned').textContent=S.earned;renderSlips();renderShop();renderStage()}
 function award(p){S.earned+=p;save();renderPts();floatPts(p);joy();say(rnd(CHEER));toast('+'+p+' 微光點數');checkStage()}
-function addColor(hex){S.colors.unshift(hex);S.colors=S.colors.slice(0,12);applyGlow();save();renderHome()}
+function addColor(hex){S.colors.unshift(hex);const dk=today();(S.dayColors[dk]=S.dayColors[dk]||[]).unshift(hex);S.colors=S.colors.slice(0,12);applyGlow();save();renderHome()}
 function finish(t,p){const d=today();S.log[d]=S.log[d]||{};S.log[d][t.id]=(S.log[d][t.id]||0)+1;const w=wkKey();S.wk[w]=S.wk[w]||{};S.wk[w][t.id]=1;S.last=t.title;award(p);feedback(t);renderTasks()}
 
 /* ---------- tasks ---------- */
 const isDone=t=>t.type==='stone'?!!S.calendar[today()]:t.lim==='day'?!!(S.log[today()]||{})[t.id]:t.lim==='wk'?!!(S.wk[wkKey()]||{})[t.id]:false;
 function renderTasks(){
- const log=S.log[today()]||{},lv=S.userLevel||'A1';let h='';
+ const log=S.log[today()]||{},lv=effLevel();let h='';
  if(lv==='B'||lv==='C')h+=`<div class="row"><div class="t">社交模式<small>開啟後可啟用社交任務，並分享今天的微光</small></div><button class="btn ${S.social?'':'ghost'}" id="socBtn">${S.social?'已開啟':'開啟'}</button></div>`;
  POOL[lv].forEach(L=>{
   h+=`<h2>${LVT[L]}</h2>`;
@@ -688,9 +752,9 @@ $('#shop').addEventListener('click',async e=>{
 
 /* ---------- settings: backup / restore ---------- */
 function refresh(){
- applyTheme();applyGlow();applyRoom();renderPts();renderTasks();renderCards();renderBag();renderHome();
+ applyTheme();applyGlow();applyRoom();renderPts();renderTasks();renderCards();renderBag();renderHome();renderMail();
  $('.luma').classList.remove('asleep');$('#banner').hidden=true;
- if(S.onboarded===false)startOnb();else if(!S.userLevel)openLevel();
+ if(S.isFirstLogin)startWelcome();else if(!S.userLevel)startAssess('solo');
 }
 $('#setBtn').onclick=()=>$('#setDlg').showModal();
 $('#setX').onclick=()=>$('#setDlg').close();
@@ -713,7 +777,7 @@ function renderStage(){
  $('#stName').textContent='心靈階段 · '+s0.n;
  $('#stNext').textContent=nx?'再 '+(nx.at-e)+' 點，進入'+nx.k:'造型已可到小屋解鎖';
  $('#stFill').style.width=(nx?Math.min(100,(e-s0.at)/(nx.at-s0.at)*100):100)+'%';
- $('#shareRow').hidden=!S.social;renderLv();
+ $('#shareRow').hidden=!S.social;
 }
 function checkStage(){
  const n=stageOf(S.earned);if(n<=S.stage)return;
@@ -753,91 +817,267 @@ function maybeHint(k,t,delay=600){
 }
 $('#hint').onclick=()=>{$('#hint').hidden=true};
 
-const OQ=[
- {q:'現在的你，最像哪一句？',o:['只想躺平','有點沉，但還撐著','還算平靜','有一點想動一動']},
- {q:'這幾天的睡眠，比較像哪一種？',o:['睡不著，或怎麼睡都睡不醒','睡得斷斷續續','大致還行','睡得不錯']},
- {q:'平常喜歡的事，現在的感覺呢？',o:['什麼都提不起勁','想做，但沒有力氣','偶爾會有一點興趣','還是樂在其中']},
- {q:'吃飯、洗臉這些日常，最近……',o:['光是做到就很用力','勉強能照顧好','大多能自己來','可以好好安排']},
- {q:'心裡的聲音，最近對你比較像……',o:['一直在責備我','常覺得自己不夠好','有時溫柔，有時嚴厲','大致是接納的']},
- {q:'面對身邊的人，現在的你想……',o:['誰都不想見','想有人陪，但不想說話','想輕輕聊幾句','願意主動聯絡']}
-];
-const RESP={
- A1:'沒關係，今天就讓小苔陪你躺著吧。',
- A2:'好，我們把步伐放小一點，只做剛剛好的事。',
- B:'有一點力氣了呢，我們一起慢慢找回節奏。',
- C:'你的狀態不錯，今天就加一點儀式感，好好疼愛自己吧。'
+/* ---------- welcome: three acts ---------- */
+const pines=(base,h,n,fill,op,seed)=>{let r=seed,o='';const q=()=>(r=(r*9301+49297)%233280)/233280;
+ for(let i=0;i<n;i++){const x=(i+q()*.8)*(400/n),hh=h*(.6+q()*.7),w=hh*.28;
+  o+=`M${x-w} ${base}L${x-w*.45} ${base-hh*.5}L${x-w*.75} ${base-hh*.5}L${x} ${base-hh}L${x+w*.75} ${base-hh*.5}L${x+w*.45} ${base-hh*.5}L${x+w} ${base}Z`}
+ return `<path d="${o}" fill="${fill}" opacity="${op}"/>`};
+const STARS='<g fill="#d8e6f5" opacity=".55"><circle cx="48" cy="86" r="1.3"/><circle cx="120" cy="150" r="1"/><circle cx="310" cy="70" r="1.4"/><circle cx="350" cy="190" r="1"/><circle cx="210" cy="110" r="1.1"/><circle cx="80" cy="260" r="1"/><circle cx="270" cy="250" r="1.2"/></g>';
+const SCENES={
+ A:{cls:'sc-A',glow:[255,205,110],svg:()=>`<svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice"><defs>
+  <linearGradient id="sa1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#050c18"/><stop offset=".55" stop-color="#0f2740"/><stop offset="1" stop-color="#08141f"/></linearGradient>
+  <radialGradient id="sa2"><stop offset="0" stop-color="#fff0c0" stop-opacity=".95"/><stop offset=".3" stop-color="#ffc857" stop-opacity=".5"/><stop offset="1" stop-color="#ffb02e" stop-opacity="0"/></radialGradient>
+  <linearGradient id="sa3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd27a" stop-opacity=".4"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></linearGradient>
+  <filter id="sa4" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="16"/></filter></defs>
+  <rect width="400" height="800" fill="url(#sa1)"/>${STARS}
+  <rect y="470" width="400" height="330" fill="#0b1c2e"/>
+  <g stroke="#4b7ea1" stroke-opacity=".28" fill="none" stroke-width="1.2"><path d="M-20 500Q40 492 100 500T220 500T340 500T460 500"/><path d="M-20 535Q50 526 120 535T260 535T400 535T540 535"/><path d="M-20 580Q60 570 130 580T270 580T410 580"/><path d="M-20 640Q70 628 140 640T280 640T420 640"/></g>
+  <path d="M205 470Q250 450 295 470L305 480L195 480Z" fill="#050d17"/><path d="M240 454L246 394L254 394L260 454Z" fill="#06101c"/><rect x="242" y="384" width="16" height="10" fill="#06101c"/><path d="M240 384L250 372L260 384Z" fill="#06101c"/>
+  <rect x="238" y="482" width="24" height="170" fill="url(#sa3)" class="brth"/>
+  <circle id="wLight" cx="250" cy="389" r="92" fill="url(#sa2)" class="brth"/><circle cx="250" cy="389" r="4.5" fill="#fff4cf"/>
+  <g class="fog" filter="url(#sa4)" fill="#9fb9c9" opacity=".2"><ellipse cx="120" cy="520" rx="170" ry="26"/><ellipse cx="330" cy="470" rx="150" ry="18"/></g>
+  <g class="fog f2" filter="url(#sa4)" fill="#9fb9c9" opacity=".16"><ellipse cx="260" cy="590" rx="190" ry="30"/><ellipse cx="60" cy="440" rx="120" ry="16"/></g></svg>`},
+ B:{cls:'sc-B',glow:[255,184,92],svg:()=>`<svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice"><defs>
+  <linearGradient id="sb1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030c08"/><stop offset=".6" stop-color="#0b2217"/><stop offset="1" stop-color="#05110b"/></linearGradient>
+  <radialGradient id="sb2"><stop offset="0" stop-color="#ffe0a8" stop-opacity=".95"/><stop offset=".3" stop-color="#ffb85c" stop-opacity=".5"/><stop offset="1" stop-color="#ff9f2e" stop-opacity="0"/></radialGradient>
+  <linearGradient id="sb3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05110b" stop-opacity="0"/><stop offset="1" stop-color="#8fb39c" stop-opacity=".22"/></linearGradient></defs>
+  <rect width="400" height="800" fill="url(#sb1)"/>${STARS}
+  <path d="M0 470Q100 430 200 462T400 440V800H0Z" fill="#0b2218"/>
+  ${pines(500,150,13,'#0d2619',.9,7)}${pines(540,190,10,'#08190f',1,21)}
+  <path d="M190 560L210 560L230 640L170 640Z" fill="#ffbe6a" opacity=".12"/>
+  <path d="M168 500L200 474L232 500Z" fill="#050d09"/><rect x="176" y="498" width="48" height="36" fill="#07140e"/><rect x="214" y="468" width="7" height="14" fill="#07140e"/>
+  <rect x="191" y="507" width="18" height="15" fill="#ffc474"/><path d="M200 507V522M191 514H209" stroke="#7a4a1a" stroke-width="1.2"/>
+  <circle id="wLight" cx="200" cy="514" r="78" fill="url(#sb2)" class="brth"/>
+  ${pines(640,260,8,'#040d08',1,3)}${pines(700,300,7,'#030a06',1,11)}
+  <rect y="560" width="400" height="240" fill="url(#sb3)"/>
+  <g class="fog" filter="url(#sb4)" fill="#a9c7b3" opacity=".12"><ellipse cx="200" cy="610" rx="220" ry="26"/></g>
+  <defs><filter id="sb4" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="16"/></filter></defs></svg>`},
+ C:{cls:'sc-C',glow:[225,236,255],rain:true,svg:()=>`<svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice"><defs>
+  <linearGradient id="sc1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#050912"/><stop offset=".6" stop-color="#141c2c"/><stop offset="1" stop-color="#0a101b"/></linearGradient>
+  <radialGradient id="sc2"><stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset=".3" stop-color="#dbe8ff" stop-opacity=".5"/><stop offset="1" stop-color="#bcd2ff" stop-opacity="0"/></radialGradient>
+  <linearGradient id="sc3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eaf2ff" stop-opacity=".35"/><stop offset="1" stop-color="#eaf2ff" stop-opacity="0"/></linearGradient></defs>
+  <rect width="400" height="800" fill="url(#sc1)"/>
+  <g fill="#0a0f19"><rect x="0" y="360" width="96" height="260"/><rect x="316" y="320" width="84" height="300"/><rect x="96" y="420" width="50" height="200"/></g>
+  <g fill="#cfe0ff" opacity=".12"><rect x="14" y="390" width="10" height="12"/><rect x="40" y="430" width="10" height="12"/><rect x="336" y="350" width="10" height="12"/><rect x="362" y="400" width="10" height="12"/></g>
+  <rect y="590" width="400" height="210" fill="#0a111c"/>
+  <rect x="190" y="596" width="40" height="190" fill="url(#sc3)" class="brth"/>
+  <g fill="#070b13"><rect x="150" y="430" width="120" height="6"/><rect x="156" y="430" width="4" height="160"/><rect x="260" y="430" width="4" height="160"/><rect x="168" y="548" width="84" height="5"/><rect x="176" y="553" width="4" height="30"/><rect x="240" y="553" width="4" height="30"/></g>
+  <rect x="190" y="440" width="40" height="76" rx="3" fill="#eaf2ff" opacity=".92"/>
+  <circle id="wLight" cx="210" cy="478" r="92" fill="url(#sc2)" class="brth"/>
+  <g fill="none" stroke="#cfe0ff" stroke-opacity=".3"><ellipse cx="210" cy="640" rx="22" ry="5"><animate attributeName="rx" values="10;34;10" dur="3.4s" repeatCount="indefinite"/></ellipse><ellipse cx="290" cy="690" rx="16" ry="4"><animate attributeName="rx" values="8;28;8" dur="4.2s" repeatCount="indefinite"/></ellipse></g></svg>`}
 };
-let ob={q:-1,ans:[]};
-function obResult(){
- const a=ob.ans,v=a.filter(x=>x!==null&&x!==undefined),avg=v.length?v.reduce((x,y)=>x+y,0)/v.length:0;
- let lv=avg<.9?'A1':avg<1.7?'A2':avg<2.4?'B':'C';
- if(a[0]===0||a[3]===0)lv='A1';
- else if(a[3]===1&&(lv==='B'||lv==='C'))lv='A2';
- return lv;
+let wStage='',wExiting=false,wT=null;
+function lightPos(){const e=$('#wLight');if(!e)return{x:innerWidth/2,y:innerHeight/2};const r=e.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2}}
+function placeTxt(){const L=lightPos(),t=$('#wTxt');t.style.left=Math.max(150,Math.min(innerWidth-150,L.x))+'px';t.style.top=Math.max(60,L.y-120)+'px'}
+function wOpen(){
+ const w=$('#wel');if(!SCENES[S.onboardingScene])S.onboardingScene=['A','B','C'][Math.floor(Math.random()*3)];
+ w.className='';w.classList.add(SCENES[S.onboardingScene].cls);w.hidden=false;wExiting=false;
 }
-function startOnb(){
- ob={q:-1,ans:Array(6).fill(null)};
- $('#obL').innerHTML=luma();applyGlow();
- $('#onb').classList.remove('out');$('#onb').hidden=false;obRender();
+function startWelcome(){
+ wOpen();save();
+ if(S.welStep==='pledge')return showAct2();
+ if(S.welStep==='assess')return startAssess('first');
+ showAct1();
 }
-function obRender(){
- const b=$('#obB'),n=ob.q;let h='';
- if(n<0){
-  h=`<h2 class="obT">允許停滯，<br>記錄痕跡，<br>微光前行。</h2><p class="obP">這裡沒有懲罰，也沒有打卡壓力。<br>沒做到的日子，就讓它空白著。<br>你只要在這裡就好。</p><div class="obA"><button class="btn" data-ob="next">繼續</button></div>`;
- }else if(n<6){
-  const Q=OQ[n];
-  h=`<p class="obS">最近的心情，大概是哪一種狀態呢？</p><h3 class="obQ">${Q.q}</h3><div>${Q.o.map((t,i)=>`<button type="button" class="opt${ob.ans[n]===i?' on':''}" data-pick="${i}"><span class="og" style="--g:${(i+1)/4}"></span><span><b>${t}</b></span></button>`).join('')}</div>
-  <div class="obN"><span class="dots">${Array.from({length:6},(_,i)=>`<i class="${i<=n?'on':''}"></i>`).join('')}</span><span><button class="gear" data-ob="back" ${n?'':'hidden'}>上一題</button> <button class="gear" data-ob="skip">先跳過</button></span></div>
-  <p class="obS" style="margin-top:14px">沒有對錯，答案只用來幫小苔選任務，不會被保存。</p>`;
- }else{
-  ob.lv=obResult();ob.gift=ob.ans[0]===0||ob.lv==='A1';
-  h=`<h3 class="obQ">${RESP[ob.lv]}</h3><p class="obP">今日能量 · ${ob.lv} · ${LV[ob.lv].tag}<br><small>之後隨時可以在首頁切換。</small></p>`
-   +(ob.gift?`<p class="obG">已把一張「完全躺平許可」放進你的背包。</p>`:'')
-   +(ob.lv==='A1'?`<p class="obH">心裡太沉重的時候，也可以打安心專線 1925（24 小時、免費），或找一位信任的人說說話。</p>`:'')
-   +`<div class="obA"><button class="btn" data-ob="done">進入微光宇宙</button> <button class="gear" data-ob="back">回上一題</button></div>`;
- }
- b.innerHTML=h;b.classList.remove('pgin');void b.offsetWidth;b.classList.add('pgin');
+function showAct1(){
+ wStage='scene';S.welStep='scene';
+ const sc=SCENES[S.onboardingScene],el=$('#wScene');
+ el.hidden=false;el.style.cssText='';el.innerHTML=sc.svg()+(sc.rain?'<div class="rain"></div><div class="rain r2"></div>':'');
+ $('#wTxt').hidden=false;$('#wTap').hidden=false;$('#wPanel').innerHTML='';$('#wCv').style.display='none';
+ requestAnimationFrame(placeTxt);addEventListener('resize',placeTxt);
+ try{$('#wel').focus()}catch(e){}
 }
-function obDone(){
- S.userLevel=ob.lv;S.onboarded=true;
- if(ob.gift)S.bag.push({uid:Date.now()+'-'+Math.random().toString(36).slice(2),t:'完全躺平許可',s:'今天可以沒有產出',c:0});
- save();$('#onb').classList.add('out');setTimeout(()=>{$('#onb').hidden=true},700);
- renderTasks();renderLv();renderBag();renderPts();say(RESP[ob.lv]);
+function warp(){
+ wStage='warp';$('#wTap').hidden=true;$('#wTxt').style.transition='opacity .6s';$('#wTxt').style.opacity=0;
+ const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(reduce)return setTimeout(showAct2,500);
+ const cv=$('#wCv'),dpr=Math.min(2,window.devicePixelRatio||1),W=innerWidth,Hh=innerHeight,x=cv.getContext('2d');
+ cv.width=W*dpr;cv.height=Hh*dpr;cv.style.display='block';cv.style.opacity=1;x.scale(dpr,dpr);
+ const L=lightPos(),g=SCENES[S.onboardingScene].glow,sc=$('#wScene'),R=Math.hypot(W,Hh)/2;
+ sc.style.transformOrigin=L.x+'px '+L.y+'px';
+ requestAnimationFrame(()=>{sc.style.transition='transform 2.3s cubic-bezier(.55,.05,.85,.35)';sc.style.transform='scale(7)'});
+ const ps=Array.from({length:200},()=>({a:Math.random()*6.283,r:(.25+Math.random()*.9)*R,sp:.55+Math.random()*.9}));
+ const T=2300,t0=performance.now();
+ const f=now=>{
+  const t=Math.min(1,(now-t0)/T),e=t*t;
+  x.clearRect(0,0,W,Hh);x.lineCap='round';
+  ps.forEach(p=>{
+   const k=Math.min(1,e*p.sp*1.25),d0=p.r*(1-k),d1=p.r*(1-Math.min(1,k+.05+.14*e));
+   x.strokeStyle=`rgba(${g[0]},${g[1]},${g[2]},${(.15+.6*e)*(1-k*.6)})`;x.lineWidth=1+e*1.6;
+   x.beginPath();x.moveTo(L.x+Math.cos(p.a)*d0,L.y+Math.sin(p.a)*d0);x.lineTo(L.x+Math.cos(p.a)*d1,L.y+Math.sin(p.a)*d1);x.stroke();
+  });
+  const gr=x.createRadialGradient(L.x,L.y,0,L.x,L.y,40+e*R*1.6);
+  gr.addColorStop(0,`rgba(${g[0]},${g[1]},${g[2]},${.92*e})`);gr.addColorStop(1,`rgba(${g[0]},${g[1]},${g[2]},0)`);
+  x.fillStyle=gr;x.fillRect(0,0,W,Hh);
+  if(t<1)requestAnimationFrame(f);else showAct2();
+ };
+ requestAnimationFrame(f);
 }
-$('#onb').addEventListener('click',e=>{
- const pk=e.target.closest('[data-pick]'),g=e.target.closest('[data-ob]');
- if(pk){
-  const n=ob.q;ob.ans[n]=+pk.dataset.pick;
-  $$('.opt',$('#obB')).forEach(x=>x.classList.toggle('on',x===pk));
-  setTimeout(()=>{if(ob.q===n){ob.q++;obRender()}},260);return;
- }
- if(!g)return;
- const a=g.dataset.ob;
- if(a==='done')return obDone();
- if(a==='next')ob.q=0;else if(a==='skip'){ob.ans[ob.q]=null;ob.q++}else if(a==='back')ob.q--;
- obRender();
-});
+$('#wel').addEventListener('click',()=>{if(wStage==='scene')warp()});
+$('#wel').addEventListener('keydown',e=>{if(wStage==='scene'&&(e.key==='Enter'||e.key===' ')){e.preventDefault();warp()}});
+function showAct2(){
+ wStage='pledge';S.welStep='pledge';save();removeEventListener('resize',placeTxt);
+ $('#wScene').hidden=true;$('#wTxt').hidden=true;$('#wTap').hidden=true;
+ const cv=$('#wCv');cv.style.opacity=0;setTimeout(()=>{cv.style.display='none'},950);
+ $('#wPanel').innerHTML=`<div class="wcol"><div class="wcard pgin"><div class="wl">${luma()}</div><h2 class="wt">微光宣言</h2><p class="wq">允許停滯，記錄痕跡，微光前行。</p><p class="wp">這裡沒有懲罰，沒有倒數扣血，也沒有打卡壓力。<br>沒做到的日子，就讓它空白著。<br>你只要在這裡就好。</p><label class="wn" for="wName">請問怎麼稱呼你呢？</label><input id="wName" maxlength="12" value="旅人" autocomplete="nickname"><button type="button" class="wb" data-w="go">帶著小苔出發 ➔</button></div></div>`;
+ applyGlow();
+}
+function act2Go(){
+ const v=Array.from(($('#wName').value||'').trim()).slice(0,12).join('');
+ S.userName=v||'旅人';save();showAct3();
+}
+function showAct3(){
+ wStage='talk';S.welStep='assess';save();
+ $('#wPanel').innerHTML=`<div class="wcol"><div class="wcard pgin"><div class="wl">${luma()}</div><p class="wq">在開始漫遊之前，<br>小苔想先聽聽你最近的感覺……</p><button type="button" class="wb" data-w="talk">好，慢慢說</button></div></div>`;
+ applyGlow();
+}
 
-/* ---------- energy level: onboarding / switch ---------- */
-function renderLv(){$('#lvName').textContent='今日能量 · '+(S.userLevel?S.userLevel+' · '+LV[S.userLevel].tag:'尚未選擇')}
-function openLevel(){
- const first=!S.userLevel;
- $('#lvQ').textContent=first?'今天，你的心靈能量大概停在哪裡呢？':'現在的你，停在哪裡呢？';
- $('#lvLuma').innerHTML=luma();applyGlow();
- $('#lvOpts').innerHTML=Object.entries(LV).map(([k,v])=>`<button type="button" class="opt${S.userLevel===k?' on':''}" data-lv="${k}"><span class="og" style="--g:${v.g}"></span><span><b>${v.t}</b><small>${k} · ${v.s}</small></span></button>`).join('');
- $('#lvX').hidden=first;
- $('#lvDlg').showModal();
+/* ---------- adaptive assessment engine ---------- */
+const QP=(scene,core,follow,life)=>({scene,core:core.map(([q,...o])=>({q,o})),follow:follow.map(([k,q,...o])=>({k,q,o})),life:life.map(([q,...o])=>({q,o}))});
+const QUESTION_POOLS=[
+ QP('清晨的窗邊',[
+  ['天剛亮，窗簾縫裡漏進一道光。睜開眼睛的那一刻，你通常……','自然醒來，還有點期待新的一天','想再賴一下，不過起得來','腦袋醒了，身體卻不想動','只想把被子拉高，什麼都不想面對'],
+  ['床邊的地板涼涼的。這幾天，光是從床上坐起來……','沒什麼負擔','需要給自己一點時間','要鼓起一點力氣才做得到','像在搬一塊很重很重的石頭'],
+  ['房間裡的某個角落，安靜地待在那裡。你看著它的時候……','覺得自在，這裡是我的小窩','有點亂，不過還待得住','不太想多看，也不知道從哪裡開始','只想快點把視線移開'],
+  ['窗外傳來一點生活的聲音。想到今天要做的事……','有幾件想做的事在等著我','有也可以，沒有也可以','提不起勁，做什麼都差不多','光是想，就覺得好累好累']],
+  [['days','小苔想輕輕問一下時間。像這樣沉沉的早晨，大概陪了你多久？','只是最近一兩天','大約一個禮拜','有兩三個禮拜了','好一陣子了，久到記不清'],
+   ['impact','那份沉重，有沒有悄悄影響到日常？','幾乎沒有','有些事會慢半拍','常常卡住，很多事會拖著','連最基本的日常都很吃力']],
+  [['想像一個剛剛好的早晨。你最想先為自己做的一件小事是……','出門走走，曬一點太陽','慢慢整理一下房間','窩在窗邊，看一會兒天色','只要有一杯溫水就好'],
+   ['如果窗台上能多一樣東西，你想要……','一盆會長大的綠植','一盞暖暖的小燈','一張喜歡的明信片','什麼都不用，空空的也很好'],
+   ['早晨裡，你比較喜歡哪一種聲音？','喜歡的歌，輕輕跟著哼','輕輕的鳥鳴或雨聲','很小很小聲的音樂','安安靜靜的就好'],
+   ['一天剛開始的時候，你希望小苔怎麼陪你？','和我一起訂一個小目標','提醒我喝杯水就好','安靜待在旁邊','不用說話，在就好']]),
+ QP('夜裡的床邊',[
+  ['燈關了，枕頭涼涼的。躺下之後，你的腦袋像……','慢慢安靜下來，很快睡著','想一些事，不過還是睡得著','停不下來，一直轉個不停','越想越清醒，天都快亮了'],
+  ['半夜，房間很安靜。你會不會醒來？','很少醒，醒了也能再睡','偶爾醒來，過一會兒就睡著','常常醒來，心裡有點慌','醒來之後就睡不著，滿腦子都是擔心'],
+  ['睡前，白天發生的事像一張張小卡片。它們……','輕輕放下了','偶爾會想起一兩張','一張一張在腦海裡重播','一直在提醒我哪裡沒做好'],
+  ['天亮了，你回想昨晚的睡眠……','像充飽了電','普通，還可以','睡了好像沒睡','怎麼睡都不夠，或睡很久還是累']],
+  [['days','夜裡的這些念頭，陪了你多久？','就這幾天','大約一個禮拜','兩三個禮拜','好一陣子了'],
+   ['impact','睡得不好的隔天，日子會變成什麼樣子？','幾乎沒有影響','有點恍神，但撐得住','很多事做不動','連最基本的事都很吃力']],
+  [['睡前，你想要的小儀式是……','寫下今天的三件小事','泡個腳或洗個熱水澡','關燈，聽一點輕輕的聲音','什麼都不做，只想早點躺平'],
+   ['你喜歡的夜晚，是哪一種？','點一盞暖黃小燈，翻幾頁書','把手機放遠一點，深呼吸幾下','開著影片，讓聲音陪著我','只要不是一個人待著就好'],
+   ['睡前的手機，通常……','到點就放下','滑一滑就放下','常常滑到很晚','是我睡前唯一能分心的東西'],
+   ['想像明天早晨，你希望被什麼輕輕叫醒？','窗外的陽光','一杯熱飲的香氣','鬧鐘，多按幾次','有人說一聲「早安」']]),
+ QP('傍晚的小路',[
+  ['傍晚的風輕輕吹過。你的身體現在像……','輕輕的，還有一點力氣','有點累，但還行','沉沉的，像灌了鉛','連站起來都覺得費力'],
+  ['玄關的鞋子靜靜擺著。想到要出門……','有點想出去走走','可以，但要先準備一下','覺得好麻煩，能不出門就不出門','光想就累，只想待在家裡'],
+  ['廚房傳來食物的味道。最近你的胃口……','吃什麼都香','普通，有吃就好','常忘記吃，或沒什麼胃口','吃東西像在完成任務，沒什麼滋味'],
+  ['肩膀和胸口，今天的感覺是……','沒什麼特別','偶爾有點緊','常常緊緊的、悶悶的','一直都不舒服，放鬆不下來']],
+  [['days','身體的這份沉重，陪了你多久？','只是最近幾天','大約一個禮拜','兩三個禮拜','好一陣子了'],
+   ['impact','身體沒力氣的時候，日常會……','沒什麼影響','做事比較慢','很多事得放著','連洗澡、吃飯都很吃力']],
+  [['想叫醒身體的話，你想用哪一種方式？','出門快走，或動一動','慢慢伸展幾個動作','曬曬太陽、吹吹風','蓋著毯子，喝點溫熱的東西'],
+   ['路上，你想聽見什麼？','喜歡的歌，跟著節奏走','雨聲或海浪聲','很輕很輕的音樂','安靜就好'],
+   ['你比較喜歡哪一種氣味？','檸檬、柑橘的清爽','木質、草本的安穩','熟悉的洗衣精香味','沒有特別想聞什麼'],
+   ['今天的一餐，你想要……','自己煮一點新鮮的','買一份喜歡的外帶','熱熱的湯或粥','有東西吃就好']]),
+ QP('書桌與房間',[
+  ['書桌上，待辦的小紙條排成一排。看著它們……','一件一件慢慢來','有點多，不過排得出順序','知道該做，卻動不了手','看到就想逃，腦袋一片空白'],
+  ['環顧房間，桌面和地板……','大致有序','有點雜，但我找得到東西','東西越堆越多，不太想碰','亂得不太敢去看'],
+  ['洗碗、倒垃圾、洗衣服這些小事……','都能順手做完','偶爾會拖','常常拖到最後一刻','很多都停在那裡，不知從何開始'],
+  ['晚餐要吃什麼這種小決定……','沒問題','有點猶豫，還是選得出','會卡住很久','怎麼選都累，乾脆不選']],
+  [['days','這種動不了的感覺，持續多久了？','只是最近幾天','大約一個禮拜','兩三個禮拜','好一陣子了'],
+   ['impact','現在的生活秩序……','還在軌道上','有些地方鬆掉了','很多地方都亂了','像是整個失去了方向']],
+  [['如果要從一個小地方開始整理，你想從……','書桌的一小塊','一個固定的小角落','一樣東西就好','有人陪我一起'],
+   ['你比較能接受哪一種待辦清單？','紙筆寫下三件事','手機提醒一件事','只記一件最小的事','不想有任何清單'],
+   ['做完一件小事後，你想怎麼犒賞自己？','喝杯好喝的飲料','看一集喜歡的劇','賴著不動一會兒','什麼都不用，做完就好'],
+   ['一次能專心做事的長度大概是……','二十五分鐘','十分鐘','三分鐘','一分鐘也行']]),
+ QP('沙發與毛毯',[
+  ['你坐在沙發上，心裡有個小小的聲音。它對你說話的口氣，多半是……','溫和的，會鼓勵我','有時嚴格，但還好','常常挑剔，說我不夠好','幾乎都在責備我'],
+  ['終於有一段空閒，可以坐下來休息。這時候……','能安心地休息','休息一下，心裡有點過意不去','一直覺得自己在浪費時間','根本不敢休息，一休息就愧疚'],
+  ['有人誇你做得很好。你的反應是……','開心地收下','有點不好意思，不過說聲謝謝','覺得對方只是客氣','完全不相信，覺得自己不值得'],
+  ['一件事沒做好的時候……','會難過，不過很快能放下','想了好幾遍才放下','一直記在心裡反覆想','覺得自己整個人都很糟']],
+  [['days','這些責備自己的聲音，陪了你多久？','只是最近幾天','大約一個禮拜','兩三個禮拜','好一陣子了'],
+   ['impact','那些聲音，讓你的日子……','沒什麼影響','偶爾讓我做事猶豫','常讓我什麼都不敢做','讓我連休息都很難受']],
+  [['放鬆的時候，你最喜歡……','泡澡或按摩','看喜歡的書或劇','窩在毯子裡什麼都不做','有人陪我說說話'],
+   ['你想聽自己對自己說一句……','「今天也不錯」','「辛苦了」','「慢慢來沒關係」','「你在這裡就好」'],
+   ['一個小小的獎勵，你比較想要……','買一朵花','吃一口甜的','多睡十分鐘','被輕輕抱一下'],
+   ['你希望被怎麼對待？','被鼓勵一點','被理解一下','被安靜地陪著','不要被打擾']]),
+ QP('窗邊的兩張椅子',[
+  ['手機亮了，是朋友傳來的訊息。你……','開心地回','晚點回，也沒關係','看到了，但不太想回','看到就想把手機翻過去'],
+  ['想像和朋友相約見面。你的心情是……','滿期待的','可以去，不過會累','想去也想躲','完全不想見任何人'],
+  ['一個人待著的時候……','很自在','偶爾有點孤單','常覺得沒有人懂','孤單，卻也不想被打擾'],
+  ['有人輕輕問：「你還好嗎？」你會……','回答「還好」，並聊一聊','簡單回一句就好','不知道怎麼回','覺得好有壓力']],
+  [['days','想躲開人群的這份心情，陪了你多久？','只是最近幾天','大約一個禮拜','兩三個禮拜','好一陣子了'],
+   ['impact','這樣的距離，讓日子……','沒什麼影響','偶爾覺得有點悶','常常覺得被隔開','像是整個世界都很遠']],
+  [['你想要的陪伴，比較像……','一起去散步','一起喝杯飲料','各做各的，在同一個空間','線上靜靜陪著，不用說話'],
+   ['每天一個小小的儀式，你比較想要……','固定時間點一盞燈或泡杯茶','週末做一頓好吃的','每天寫一句話','回到家先洗手、換衣服'],
+   ['你最想收到的是……','一句簡單的問候','一張小卡片','一個可愛的貼圖','什麼都不用，知道有人在就好'],
+   ['今天的小小收穫，你想……','分享給朋友看','只記錄給自己','傳給一位信任的人','留給自己就好']])
+];
+class AdaptiveAssessmentEngine{
+ constructor(pool){this.pool=pool;this.q=pool.core.map(x=>({...x,kind:'core'}));this.i=0;this.fu=0;this.life=false;this.res=[];this.busy=false}
+ get cur(){return this.q[this.i]||null}
+ get total(){return this.q.length+(this.life?0:this.pool.life.length)}
+ get done(){return this.life&&this.i>=this.q.length}
+ answer(s){
+  const c=this.cur;if(!c)return;
+  this.res.push({kind:c.kind,k:c.k,s});
+  if(c.kind==='core'&&s!==null&&s>=2&&this.fu<2)this.q.splice(this.i+1,0,{...this.pool.follow[this.fu++],kind:'follow'});
+  this.i++;
+  if(!this.life&&!this.q.slice(this.i).some(x=>x.kind!=='life')){this.q.push(...this.pool.life.map(x=>({...x,kind:'life'})));this.life=true}
+ }
+ result(){
+  const by=k=>this.res.filter(r=>r.kind===k&&r.s!==null).map(r=>r.s),avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
+  const core=by('core'),parts=[[avg(core),.55],[avg(by('follow')),.2],[avg(by('life')),.25]].filter(p=>p[0]!==null);
+  if(!parts.length)return 'A1';
+  const comp=parts.reduce((a,p)=>a+p[0]*p[1],0)/parts.reduce((a,p)=>a+p[1],0);
+  const hr=core.filter(s=>s>=2).length,imp=this.res.find(r=>r.k==='impact'&&r.s!==null);
+  let lv=comp>=2.1?'A1':comp>=1.5?'A2':comp>=.8?'B':'C';
+  if(hr>=3||(imp&&imp.s>=3))lv='A1';
+  else if(hr===2&&(lv==='B'||lv==='C'))lv='A2';
+  else if(hr===1&&lv==='C')lv='B';
+  return lv;
+ }
 }
-$('#lvOpts').addEventListener('click',e=>{
- const b=e.target.closest('[data-lv]');if(!b)return;
- const first=!S.userLevel;
- S.userLevel=b.dataset.lv;save();$('#lvDlg').close();renderTasks();renderLv();
- say(first?'我會陪你，只留下剛剛好的任務':'好，今天就照這個節奏走');
+let AE=null;
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function startAssess(mode){
+ wOpen();wStage='assess';
+ if(S.isFirstLogin){S.welStep='assess';save()}
+ ['#wScene','#wTxt','#wTap'].forEach(q=>$(q).hidden=true);$('#wCv').style.display='none';
+ AE=new AdaptiveAssessmentEngine(QUESTION_POOLS[(S.poolStart+S.assessN)%QUESTION_POOLS.length]);AE.mode=mode;
+ renderQ();
+}
+function renderQ(){
+ if(AE.done)return finishAssess();
+ const c=AE.cur,tot=AE.total;
+ $('#wPanel').innerHTML=`<div class="wcol"><div class="wcard pgin"><div class="wl">${luma()}</div><p class="wsc">${AE.pool.scene}</p><h3 class="wq2">${c.q}</h3>${shuf([0,1,2,3]).map(i=>`<button type="button" class="ao" data-s="${i}">${c.o[i]}</button>`).join('')}<button type="button" class="wskip" data-skip="1">先不回答這題</button></div><div class="wdots">${Array.from({length:tot},(_,i)=>`<i class="${i<=AE.i?'on':''}"></i>`).join('')}</div></div>`;
+ applyGlow();AE.busy=false;
+}
+function finishAssess(){
+ wStage='done';
+ S.userLevel=AE.result();S.isFirstLogin=false;S.welStep='';S.assessN++;S.dayAdj={d:today(),v:0};save();
+ renderTasks();renderStage();
+ $('#wPanel').innerHTML=`<div class="wcol"><div class="wcard pgin"><div class="wl">${luma()}</div><p class="wq">小苔已經感受到了，<br>今天為你安排了最合適的陪伴步調囉。</p><p class="wnote">任何時候覺得太沉重，都可以撥打安心專線 1925，或找一位信任的人聊聊。</p><button type="button" class="wb" data-w="enter">進入微光宇宙</button></div></div>`;
+ applyGlow();clearTimeout(wT);wT=setTimeout(wExit,6500);
+}
+function wExit(){
+ if(wExiting)return;wExiting=true;clearTimeout(wT);
+ $('#wel').classList.add('out');
+ setTimeout(()=>{$('#wel').hidden=true;$('#wPanel').innerHTML=''},950);
+ say((S.userName||'旅人')+'，我們慢慢來');
+ setTimeout(maybeDaily,400);
+}
+$('#wPanel').addEventListener('click',e=>{
+ const w=e.target.closest('[data-w]');
+ if(w){const a=w.dataset.w;if(a==='go')act2Go();else if(a==='talk')startAssess('first');else if(a==='enter')wExit();return}
+ if(!AE||AE.busy||wStage!=='assess')return;
+ const o=e.target.closest('.ao'),sk=e.target.closest('[data-skip]');
+ if(o){AE.busy=true;o.classList.add('on');const v=+o.dataset.s;setTimeout(()=>{AE.answer(v);renderQ()},280)}
+ else if(sk){AE.busy=true;AE.answer(null);renderQ()}
 });
-$('#lvX').onclick=()=>$('#lvDlg').close();
-$('#lvDlg').addEventListener('cancel',e=>{if(!S.userLevel)e.preventDefault()});
-$('#lvBtn').onclick=()=>openLevel();
-$('#setLv').onclick=()=>{$('#setDlg').close();openLevel()};
+$('#wPanel').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='wName'){e.preventDefault();act2Go()}});
+$('#wPanel').addEventListener('focusin',e=>{if(e.target.id==='wName')e.target.select()});
+$('#setRe').onclick=()=>{$('#setDlg').close();startAssess('again')};
+
+/* ---------- daily micro check-in ---------- */
+function maybeDaily(){
+ if(S.isFirstLogin||!S.userLevel||(S.dayAdj&&S.dayAdj.d===today())||!$('#wel').hidden)return;
+ $('#daily').hidden=false;
+}
+$('#daily').addEventListener('click',e=>{
+ const b=e.target.closest('[data-dv]');if(!b)return;
+ const v=+b.dataset.dv;S.dayAdj={d:today(),v};save();$('#daily').hidden=true;renderTasks();
+ say(v<0?'好，今天慢一點，只留下輕輕的事。':v>0?'有一點力氣了呢，今天多留幾樣給你選。':'好，今天就照這個步調走。');
+});
 
 /* ---------- calendar / emotion stones ---------- */
 const MOODS=[
@@ -875,8 +1115,8 @@ function renderCal(pop){
  for(let i=0;i<first;i++)h+='<span class="blank"></span>';
  for(let d=1;d<=days;d++){
   const k=y+'-'+pad(m+1)+'-'+pad(d),e=S.calendar[k],col=e&&MOOD[e.mood]?MOOD[e.mood].c:'#cdbf9f';
-  const on=!!e||k===tk;
-  h+=`<button class="day ${e?'has':''} ${e&&e.destroyed?'rel':''} ${k===tk?'today':''} ${pop===k?'pop':''}" data-day="${k}" style="--mc:${col}" ${on?'':'disabled'} aria-label="${k}${e?' '+esc(e.mood):''}"><span class="dn">${d}</span>${e?`<span class="ico">${cellArt(e)}</span>`:''}</button>`;
+  const on=k<=tk;
+  h+=`<button class="day ${e?'has':''} ${e&&e.destroyed?'rel':''} ${k===tk?'today':''} ${pop===k?'pop':''}" data-day="${k}" style="--mc:${col}" ${on?'':'disabled'} aria-label="${k}${e?' '+esc(e.mood):''}"><span class="dn">${d}</span>${e?`<span class="ico">${cellArt(e)}</span>`:''}${S.journal[k]&&S.journal[k].text?'<span class="jd"></span>':''}</button>`;
  }
  $('#cal').innerHTML=h+'</div>';
 }
@@ -885,10 +1125,7 @@ $('#cal').addEventListener('click',e=>{
  if(n){cm.setMonth(cm.getMonth()+ +n.dataset.cm);renderCal();return}
  const d=e.target.closest('[data-day]');if(!d)return;
  const k=d.dataset.day;
- if(S.calendar[k])return openStone(k);
- if(k!==today())return;
- if(!todayCount())return toast('完成一項微光任務（寫下情緒石頭也算），就能放下今天的心情');
- openMood();
+ openDay(k);
 });
 
 /* mood ritual */
@@ -913,6 +1150,7 @@ $('#moodGo').onclick=()=>{
  S.calendar[today()]={mood:mSel.k,text:tx,destroyed:false,date:Date.now()};save();
  const stT=TASKS.find(t=>t.id==='stone');if(stT&&!(S.log[today()]||{}).stone)finish(stT,stT.pts);
  runRitual(mSel,tx);
+ if(checkLetter())setTimeout(()=>toast('小苔的信箱有一封新信'),3400);
 };
 function runRitual(m,tx){
  $('#moodBody').hidden=true;
@@ -944,6 +1182,201 @@ $('#crushGo').onclick=()=>{
  award(10);renderCal();
 };
 $('#crushX').onclick=()=>$('#crushDlg').close();
+
+/* ---------- micro journal ---------- */
+const jCount=()=>{$('#jC').textContent=$('#jTx').value.length+'/50'};
+function renderJ(){const j=S.journal[today()];$('#jTx').value=j?j.text:'';jCount()}
+$('#jTx').addEventListener('input',jCount);
+$('#jSave').onclick=()=>{
+ const v=$('#jTx').value.trim().slice(0,50);
+ if(v)S.journal[today()]={text:v,date:Date.now()};else delete S.journal[today()];
+ save();renderCal();toast(v?'收進今天了':'今天保持空白也很好');
+};
+
+/* ---------- day card ---------- */
+let dayKey='';
+function openDay(k){
+ if(k>today())return;
+ const e=S.calendar[k],j=S.journal[k],tk=today();dayKey=k;
+ const cols=(S.dayColors[k]||[]).filter(c=>/^#[0-9a-f]{6}$/i.test(c)).slice(0,6),dt=new Date(k+'T00:00:00');
+ const none=t=>`<span style="color:var(--sub)">${t}</span>`;
+ let st='';
+ if(e){const m=MOOD[e.mood]||{pos:0};st=e.destroyed?(e.by==='wander'?'被小苔帶去遠方了':'已隨風散去'):m.pos?'珍藏中':'還在這裡'}
+ $('#dayBody').innerHTML=`<h3>${dt.getMonth()+1} 月 ${dt.getDate()} 日 <small style="color:var(--sub);font-size:14px">週${'日一二三四五六'[dt.getDay()]}</small></h3>
+ <div class="dsec"><small>微光日誌</small><div class="dtx">${j&&j.text?esc(j.text):none('這天沒有留下文字，也很好。')}</div></div>
+ <div class="dsec"><small>情緒石頭</small>${e?`<div class="dstone"><div class="ic2w">${cellArt(e)}</div><div>${esc(e.mood)}${e.text?' · 「'+esc(e.text)+'」':''}<br><small style="color:var(--sub)">${st}</small></div></div>`:none('這天沒有放下的心情。')}</div>
+ <div class="dsec"><small>當天採集的主色調</small>${cols.length?`<div class="chips2">${cols.map(c=>`<div class="pchip"><i style="background:${c}"></i><span>${c}</span></div>`).join('')}</div>`:none('這天沒有採集顏色。')}</div>`;
+ const a=[];
+ if(e&&!e.destroyed&&MOOD[e.mood]&&!MOOD[e.mood].pos)a.push('<button class="btn ghost" data-da="crush">粉碎釋放</button>');
+ if(!e&&k===tk)a.push('<button class="btn ghost" data-da="mood">放下今天的心情</button>');
+ a.push('<button class="btn" data-da="x">關閉</button>');
+ $('#dayAct').innerHTML=a.join('');
+ $('#dayDlg').showModal();
+}
+$('#dayAct').addEventListener('click',e=>{
+ const b=e.target.closest('[data-da]');if(!b)return;
+ $('#dayDlg').close();
+ if(b.dataset.da==='crush')openStone(dayKey);
+ else if(b.dataset.da==='mood'){if(todayCount())openMood();else toast('完成一項微光任務（寫下情緒石頭也算），就能放下今天的心情')}
+});
+
+/* ---------- letters ---------- */
+const REPLY={
+ low:{
+  open:['這段時間真的辛苦你了。','謝謝你這個月還是來了。','這陣子的你，大概撐得很用力吧。'],
+  mirror:['看著你寫下的這些字，我知道有些日子並不容易。','從你放進石頭裡的那些心情，我看見你一個人扛了不少。','我沒有急著要你好起來，只是想先告訴你，我都有看見。'],
+  affirm:['但請記得，能這樣慢下來、給自己喘息的空間，本身就是一種很勇敢的選擇。','有些日子只做到一件很小的事，那也算數，而且是真的算數。','你沒有退步，你只是在用現在有的力氣，好好活著。'],
+  close:['我在這裡，陪你一起慢慢等光亮起來。','不急，我們慢慢來，光會自己找到路。','下個月也好，下週也好，我都在這裡。']
+ },
+ mixed:{
+  open:['這個月的你，有晴也有雨呢。','讀完你這個月的足跡，我想先輕輕抱你一下。','這個月起起伏伏，你還是回來了，我很開心。'],
+  mirror:['有些日子很重，有些日子又透進一點光，這樣的來回，其實就是生活本來的樣子。','你寫下的字句裡，我讀到了疲憊，也讀到了一點一點的恢復。'],
+  affirm:['你沒有因為跌倒就停下來，這份願意回來的力氣，是很珍貴的堅持。','不必把每一天都過得漂亮，你這樣一天一天累積，已經很了不起。'],
+  close:['接下來不管是晴是雨，我都在這裡陪你。','下個月，我們還是慢慢來，好嗎？']
+ },
+ steady:{
+  open:['讀著你這個月的足跡，感覺到你的生活裡多了一些微小的閃光點呢！','你這個月的步調，穩穩的，我看了很安心。'],
+  mirror:['謝謝你願意和我分享這些日常。','那些平凡的小句子，我每一句都收好了。'],
+  affirm:['能一天一天這樣回來看看自己，本身就是很不容易的堅持。','你把自己照顧得比你以為的還要好。'],
+  close:['無論接下來步調如何，我都隨時在這裡，準備聽你說說話。','不管下個月是快是慢，我都陪著你。']
+ },
+ joy:['我這個月在窗台上看見一隻很認真曬太陽的小蝸牛，慢慢的，卻一點也不趕。','路過海邊車站的時候，我撿到一枚被浪磨圓的玻璃片，對著光看，裡面有一整片小小的海。','雨後的巷口，空氣聞起來有一點點甜甜的味道，我停在那裡多聞了一會兒。','我在山腰的茶亭喝到一杯很燙的茶，手心暖暖的，什麼都不用想。'],
+ curious:['你有沒有想過，下個月試一件從來沒做過的小事？比如換一條回家的路，或是在窗邊多待五分鐘。','我很好奇，你最近有沒有發現哪個小角落，悄悄變得不一樣了？下次告訴我吧。','聽說有人把喜歡的顏色收進一個小罐子裡。你的呢？也許下次散步，我們一起找找看。','如果下個月只想多嘗試一件新鮮事，你會想選哪一件？不用做到，想想就很好。']
+};
+const rng=a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const wkOf=k=>{const d=new Date(k+'T00:00:00');d.setDate(d.getDate()-((d.getDay()+6)%7));return d.toLocaleDateString('sv')};
+const checkinDays=()=>Object.keys(S.calendar).length;
+function buildLetter(n){
+ const rd=rng(Date.now()%1e9),pick=a=>a[Math.floor(rd()*a.length)];
+ const end=today(),sd=new Date();sd.setDate(sd.getDate()-30);const start=sd.toLocaleDateString('sv'),inR=k=>k>=start&&k<=end;
+ const ents=Object.entries(S.journal).filter(([k,v])=>inR(k)&&v&&v.text).sort((a,b)=>a[0]<b[0]?-1:1);
+ const stanzas=[];let cur=null,ck='';
+ ents.forEach(([k,v])=>{const w=wkOf(k);if(w!==ck){cur=[];stanzas.push(cur);ck=w}cur.push(v.text.trim())});
+ let neg=0,pos=0,rel=0;const cnt={};
+ Object.entries(S.calendar).forEach(([k,e])=>{if(!inR(k))return;const m=MOOD[e.mood];if(!m)return;if(m.pos)pos++;else neg++;cnt[e.mood]=(cnt[e.mood]||0)+1;if(e.destroyed)rel++});
+ let tasks=0,act=0;
+ Object.entries(S.log).forEach(([k,o])=>{if(!inR(k))return;const c=Object.values(o).reduce((a,b)=>a+b,0);if(c){tasks+=c;act++}});
+ const top=pp=>Object.entries(cnt).filter(([k])=>MOOD[k].pos===pp).sort((a,b)=>b[1]-a[1])[0];
+ const tn=top(0),tp=top(1);
+ let sc=(pos-neg)/Math.max(1,pos+neg);const per=tasks/Math.max(1,act);
+ sc+=tasks?(per>=3?.25:per<1.5?-.25:0):-.1;
+ if(!pos&&!neg)sc=(S.userLevel==='A1'||S.userLevel==='A2')?-.4:.3;
+ const b=sc<-.2?'low':sc>.25?'steady':'mixed',R=REPLY[b],f=[];
+ if(tasks)f.push('這個月你在 '+act+' 天裡照顧了自己 '+tasks+' 次。');
+ if(tn)f.push('你最常放下的是「'+tn[0]+'」，我都幫你收好了。');
+ if(tp)f.push('你也收藏了 '+cnt[tp[0]]+' 顆「'+tp[0]+'」的珍珠。');
+ if(rel)f.push('有 '+rel+' 顆石頭，已經被你放下了。');
+ const lg=ents.filter(([,v])=>v.text.length>=6);
+ if(lg.length)f.push('「'+pick(lg)[1].text.trim()+'」這句，我讀了好幾次。');
+ if(!f.length)f.push('這個月留下的不多，但你來了 '+n+' 天，這就是你的足跡。');
+ return{id:Date.now(),ts:Date.now(),n,start,end,stanzas,bucket:b,read:false,
+  reply:[pick(R.open)+pick(R.mirror),f.join('')+pick(R.affirm),pick(REPLY.joy)+pick(REPLY.curious),pick(R.close)]};
+}
+function checkLetter(){
+ const due=Math.floor(checkinDays()/21);
+ if(due<=S.lettersGiven)return false;
+ S.lettersGiven=due;S.letters.unshift(buildLetter(checkinDays()));save();renderMail();
+ maybeHint('mail','小苔的信箱有一封信，點右上角的信封打開看看。',4200);
+ return true;
+}
+const MAILI='<svg viewBox="0 0 32 32"><rect x="3" y="7" width="26" height="18" rx="3" fill="#E8D5E5" stroke="#cdb3c9"/><path d="M4 9l12 9 12-9" fill="none" stroke="#b99ab5" stroke-width="1.6"/><circle cx="16" cy="18" r="2.2" fill="#FFBF00"/></svg>';
+const ENV='<svg viewBox="0 0 220 150"><rect x="10" y="30" width="200" height="110" rx="10" fill="#E8D5E5"/><path d="M10 40L110 100L210 40" fill="none" stroke="#cdb3c9" stroke-width="2"/></svg>';
+function renderMail(){
+ let b=$('#mailBtn');const un=S.letters.filter(l=>!l.read).length;
+ if(!S.letters.length){if(b)b.remove();return}
+ if(!b){b=document.createElement('button');b.id='mailBtn';b.type='button';b.onclick=e=>{e.stopPropagation();openMail()};$('#stage').append(b)}
+ b.className='mail'+(un?' new':'');
+ b.setAttribute('aria-label',un?'小苔的信箱，有新信':'小苔的信箱');
+ b.innerHTML=MAILI+(un?'<span class="md"></span>':'')+'<span>小苔的信箱</span>';
+}
+function openMail(){
+ $('#mailList').innerHTML=S.letters.map(l=>`<button type="button" class="slip lt" data-lt="${l.id}"><div class="t"><b>${fmt(l.ts)} 的信</b><small>第 ${l.n} 個打卡日</small></div>${l.read?'':'<span class="hn"></span>'}</button>`).join('');
+ $('#mailDlg').showModal();
+}
+$('#mailList').addEventListener('click',e=>{const b=e.target.closest('[data-lt]');if(b)openLetter(+b.dataset.lt)});
+$('#mailX').onclick=()=>$('#mailDlg').close();
+
+let curL=null,typeT=null,lTok=0;
+function typeReply(paras,instant){
+ const box=$('#lB');if(!box)return;box.innerHTML='';
+ const ps=paras.map(()=>{const p=document.createElement('p');box.append(p);return p});
+ clearInterval(typeT);typeT=null;
+ if(instant){paras.forEach((t,i)=>ps[i].textContent=t);return}
+ let pi=0,ci=0;
+ typeT=setInterval(()=>{
+  if(pi>=paras.length){clearInterval(typeT);typeT=null;return}
+  ps[pi].textContent=paras[pi].slice(0,++ci);
+  if(ci>=paras[pi].length){pi++;ci=0}
+ },32);
+}
+function openLetter(id){
+ const L=S.letters.find(x=>x.id===id);if(!L)return;
+ curL=L;const first=!L.read,tok=++lTok;
+ $('#mailDlg').close();
+ const stz=L.stanzas.length?L.stanzas.map(s=>`<p class="stz">${s.map(esc).join('<br>')}</p>`).join(''):'<p class="stz">這個月的字句還在路上，<br>但你來過，就是足跡。</p>';
+ $('#lBody').innerHTML=`<div class="env" id="env">${ENV}<div class="flap"></div><span class="seal"></span></div><div class="paper" id="paper" hidden><h3>給 ${esc(S.userName||'旅人')} 的信</h3><p class="lsub">第 ${L.n} 個打卡日 · ${fmt(L.ts)}</p><div class="lbl">你的生命足跡</div><div>${stz}</div><div class="lbl">小苔的回信</div><div class="rp" id="lB"></div><p class="sig">— 小苔</p></div>`;
+ $('#letterDlg').showModal();
+ L.read=true;save();renderMail();
+ setTimeout(()=>{
+  if(tok!==lTok)return;
+  $('#env').classList.add('gone');$('#paper').hidden=false;
+  const ss=$$('#paper .stz');
+  ss.forEach((p,i)=>{if(first)p.style.animation='fin .8s '+(i*.35)+'s forwards';else p.style.opacity=1});
+  setTimeout(()=>{if(tok===lTok)typeReply(L.reply,!first)},first?ss.length*350+700:0);
+ },first?1300:700);
+}
+$('#lBody').addEventListener('click',()=>{if(typeT&&curL)typeReply(curL.reply,true)});
+$('#lX').onclick=()=>$('#letterDlg').close();
+$('#letterDlg').addEventListener('close',()=>{clearInterval(typeT);typeT=null;lTok++});
+
+function drawLuma(x,cx,cy,r){
+ const g=x.createRadialGradient(cx-r*.3,cy-r*.4,r*.1,cx,cy,r*1.1);
+ g.addColorStop(0,'#fff');g.addColorStop(.45,S.colors[0]||'#FFBF00');g.addColorStop(1,'#4A5D4E');
+ x.fillStyle=g;x.beginPath();x.arc(cx,cy,r,0,7);x.fill();
+ x.fillStyle='#2B323B';[-1,1].forEach(q=>{x.beginPath();x.arc(cx+q*r*.32,cy+r*.08,r*.07,0,7);x.fill()});
+ x.fillStyle='rgba(232,213,229,.9)';[-1,1].forEach(q=>{x.beginPath();x.ellipse(cx+q*r*.55,cy+r*.3,r*.13,r*.08,0,0,7);x.fill()});
+ x.strokeStyle='#2B323B';x.lineWidth=3;x.beginPath();x.arc(cx,cy+r*.22,r*.14,.2,Math.PI-.2);x.stroke();
+ x.strokeStyle='#4A5D4E';x.lineWidth=5;x.lineCap='round';x.beginPath();x.moveTo(cx,cy-r);x.lineTo(cx,cy-r*1.35);x.stroke();
+ x.fillStyle='#7C9A80';[-1,1].forEach(q=>{x.beginPath();x.ellipse(cx+q*r*.2,cy-r*1.3,r*.2,r*.1,q*-.5,0,7);x.fill()});
+ x.fillStyle='#FFBF00';x.beginPath();x.arc(cx,cy-r*1.4,r*.1,0,7);x.fill();
+}
+async function saveLetterImg(){
+ const L=curL;if(!L)return;
+ try{await document.fonts.load('30px Huninn','微光')}catch{}
+ const W=1080,P=88,mw=W-P*2,F='"Huninn","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif';
+ const c=document.createElement('canvas'),x=c.getContext('2d');
+ const wrap=(t,fs)=>{x.font=fs+'px '+F;const o=[];let l='';for(const ch of t){if(l&&x.measureText(l+ch).width>mw){o.push(l);l=ch}else l+=ch}if(l)o.push(l);return o};
+ const B=[],add=(t,fs,col,lh,al,gap)=>{wrap(t,fs).forEach(q=>B.push({t:q,fs,col,lh,al}));B.push({gap:gap||0})};
+ add('給 '+(S.userName||'旅人')+' 的信',54,'#3a3a38',76,'center',6);
+ add('第 '+L.n+' 個打卡日 · '+fmt(L.ts),28,'#8a8578',40,'center',34);
+ add('— 你的生命足跡 —',30,'#6E8B6F',46,'center',16);
+ (L.stanzas.length?L.stanzas:[['這個月的字句還在路上，但你來過，就是足跡。']]).forEach(q=>{q.forEach(t=>add(t,36,'#3a3a38',62,'left',0));B.push({gap:26})});
+ add('— 小苔的回信 —',30,'#6E8B6F',46,'center',16);
+ L.reply.forEach(t=>add(t,34,'#3a3a38',60,'left',22));
+ add('— 小苔',34,'#3a3a38',60,'right',30);
+ const H=300+B.reduce((a,b)=>a+(b.gap!==undefined?b.gap:b.lh),0)+130;
+ c.width=W;c.height=H;
+ x.fillStyle='#FBF7EE';x.fillRect(0,0,W,H);
+ const gl=x.createRadialGradient(W/2,150,10,W/2,150,420);gl.addColorStop(0,'rgba(255,191,0,.30)');gl.addColorStop(1,'rgba(255,191,0,0)');
+ x.fillStyle=gl;x.fillRect(0,0,W,520);
+ x.strokeStyle='#e6dfcd';x.lineWidth=4;x.strokeRect(28,28,W-56,H-56);
+ drawLuma(x,W/2,150,62);
+ let y=250;x.textBaseline='alphabetic';
+ B.forEach(b=>{
+  if(b.gap!==undefined){y+=b.gap;return}
+  y+=b.lh;x.font=b.fs+'px '+F;x.fillStyle=b.col;x.textAlign=b.al;
+  x.fillText(b.t,b.al==='center'?W/2:b.al==='right'?W-P:P,y-b.lh*.28);
+ });
+ x.textAlign='center';x.fillStyle='#a39d8c';x.font='26px '+F;x.fillText('微光漫遊 Luma Wander',W/2,H-62);
+ c.toBlob(async bl=>{
+  if(!bl)return toast('圖片產生失敗');
+  const f=new File([bl],'luma-letter-'+L.n+'.png',{type:'image/png'});
+  try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}}catch(e){if(e&&e.name==='AbortError')return}
+  const a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download=f.name;document.body.append(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),2000);toast('已儲存圖片');
+ },'image/png');
+}
+$('#lImg').onclick=saveLetterImg;
 
 /* ---------- visitors ---------- */
 const GUESTS=[
@@ -1016,10 +1449,11 @@ addEventListener('pagehide',stamp);
 document.addEventListener('visibilitychange',()=>{
  if(document.hidden)return stamp();
  if(Date.now()-S.lastVisit>=2*H){applyWander(wander());save()}
+ maybeDaily();
 });
 
 /* ---------- init ---------- */
-$('#stage').addEventListener('click',e=>{if(e.target.closest('.guest'))return;
+$('#stage').addEventListener('click',e=>{if(e.target.closest('.guest,.mail'))return;
  const l=$('.luma');
  if(l.classList.contains('asleep')){l.classList.remove('asleep');$('#banner').hidden=true;say('你來了，我們慢慢來')}
  else say(rnd(LINES));
@@ -1028,10 +1462,11 @@ $('#stage').addEventListener('click',e=>{if(e.target.closest('.guest'))return;
 $$('nav button').forEach(b=>b.onclick=()=>go(b.dataset.go));
 $$('.themes button').forEach(b=>b.onclick=()=>{S.theme=b.dataset.t;applyTheme();save()});
 applyAssets();applyTheme();applyGlow();applyRoom();renderPts();renderTasks();renderCards();renderBag();renderHome();go('home');
-const r=wander();applyWander(r);save();
+const r=wander();applyWander(r);checkLetter();renderMail();save();
 if(Math.random()<.5)spawnGuest();
-if(S.onboarded===false)startOnb();else if(!S.userLevel)openLevel();
+if(S.isFirstLogin)startWelcome();else if(!S.userLevel)startAssess('solo');
 hideSplash();
+if(!S.isFirstLogin)setTimeout(maybeDaily,2600);
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
